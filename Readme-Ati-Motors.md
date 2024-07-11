@@ -24,7 +24,7 @@
                                             
 1. Creating a pipeline to pull images and build them
      * Create a Jenkinsfile to write the declarative script, which will help us to pull images and build them as containers using Docker
-     * The jenkinsfile can be found in this repo at -
+     * The jenkinsfile can be found in this repo at the folder named "Rupesh Files"
      * In the file, after the basic syntax, you will mention the registry credentials provided in the assignment file, this can be done using the "registryCredentials" variable, and provide the credentials in the next lines using the db_user and db_password
      * Next up, we have to configure the stage and steps to perform the image pull and build.
      * In the first stage, you can mention, the names of the images that need to be pulled and use the latest tag to pull their latest version of images
@@ -41,4 +41,5 @@
    *  you need to create the Kubernetes manifest files that are yaml files for your pods (fleet_manager, PostgreSQL, Nginx, Redis, MongoDB, Grafana, and local docker registry.)
    *  You can deploy these files using the command "Kubernetes apply -f fleet_manager.yaml", "kubernetes apply -f PostgreSQL.yaml", like this for each file.
    *  you can also verify this using "kubectl get pods".
+   *  The YAML files are present in the repo in the folder named "Rupesh files"
      
