@@ -1,0 +1,36 @@
+// this file is used to get the latest versions of the images and build them as containers
+
+pipeline {
+    agent any
+    environment {
+        registryCredential = 'dockerhub_id'
+        db_user = 'ati'
+        db_password = 'ati1234'
+    }
+
+    stages {
+        stage('pull and build the images') {
+            steps {
+                script {
+                    docker.withRegistry('', registryCredential) {
+                        docker.image('postgres:latest').pull()
+                        docker.image('redis:latest').pull()
+                        docker.image('mongo:latest').pull()
+                        docker.image('mongo-express:latest').pull()
+                    }
+            steps {
+                script{    
+                    docker.build('postgres:latest').withRun('-e POSTGRES_USER=${DB_USERNAME} -e POSTGRES_PASSWORD=${DB_PASSWORD}') { c ->
+                        
+                    }}
+
+            steps {
+                script{
+                    docker.build('mongo-express:latest').withRun('-e ME_CONFIG_MONGODB_SERVER=mongo -e ME_CONFIG_MONGODB_PORT=27017 -e ME_CONFIG_BASICAUTH_USERNAME=${DB_USERNAME} -e ME_CONFIG_BASICAUTH_PASSWORD=${DB_PASSWORD}') { c ->
+                        
+                    }}
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fleet-manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fleet-manager
+  template:
+    metadata:
+      labels:
+        app: fleet-manager
+    spec:
+      containers:
+      - name: fleet-manager
+        image: busybox
+        command: ['sh', '-c', 'while true; do echo Hello from Fleet Manager; sleep 3600; done']
