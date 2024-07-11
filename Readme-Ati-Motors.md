@@ -1,3 +1,5 @@
+                                             Part 1
+
 1. Fork the given repo:
      * This can be done by opening the given link in the assignment and clicking the "Fork" option on the right. This will prompt a fork page and you can give the desired name to the repo.
       * This will create a new repo in your GitHub account with the same contents as in the assignment repo
@@ -18,7 +20,8 @@
       * This will run the pipeline and host the app locally on the host 3004, and you can access it using HTTP://localhost:3004
 
 ---------------------------------------------------------------------------------------------------------
-
+                                            Part 2
+                                            
 1. Creating a pipeline to pull images and build them
      * Create a Jenkinsfile to write the declarative script, which will help us to pull images and build them as containers using Docker
      * The jenkinsfile can be found in this repo at -
@@ -28,6 +31,14 @@
      * After this, these images can be built into containers using the docker build command.
 
 -----------------------------------------------------------------------------------------------------------
+                                                Part 3
 
+1. Setup a K3s cluster
+    * You can set the k3s cluster on a server/VM of your choice, create an Amazon Linux VM, and log in to it using ssh, before you set up k3s cluster, you can run the "sudo apt update" to do the updates on your system.
+    * Then you can run "curl -sfL https://get.k3s.io | sh", to install k3s on your server.
 
+2. Kubernetes manifest files
+   *  you need to create the Kubernetes manifest files that are yaml files for your pods (fleet_manager, PostgreSQL, Nginx, Redis, MongoDB, Grafana, and local docker registry.)
+   *  You can deploy these files using the command "Kubernetes apply -f fleet_manager.yaml", "kubernetes apply -f PostgreSQL.yaml", like this for each file.
+   *  you can also verify this using "kubectl get pods".
      
